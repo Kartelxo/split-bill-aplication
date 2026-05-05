@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
 
-/// Um FAB muito simples e reutilizável.
-/// Use: SimpleFAB(onPressed: () { ... });
-class SimpleFAB extends StatelessWidget {
+/// Extended FAB simples e minimalista.
+/// Use: ExtendedFAB(label: 'Adicionar', onPressed: () {} )
+class ExtendedFAB extends StatelessWidget {
   final VoidCallback onPressed;
   final IconData icon;
+  final String label;
   final Color? backgroundColor;
 
-  const SimpleFAB({
+  const ExtendedFAB({
     super.key,
     required this.onPressed,
     this.icon = Icons.add,
+    required this.label,
     this.backgroundColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
+    return FloatingActionButton.extended(
       onPressed: onPressed,
+      icon: Icon(icon),
+      label: Text(label),
       backgroundColor: backgroundColor,
-      child: Icon(icon),
     );
   }
 }
