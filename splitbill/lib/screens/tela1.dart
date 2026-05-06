@@ -77,79 +77,93 @@ class _DivisaoScreenState extends ConsumerState<DivisaoScreen> {
 
      //adicionar botao para pagina seguinte 
 
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            /// 👤 PESSOAS
-            const Text(
-              "Pessoas",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  /// 👤 PESSOAS
+                  const Text(
+                    "Pessoas",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
 
-            const SizedBox(height: 8),
+                  const SizedBox(height: 8),
 
-            AppTextField(
-              controller: pessoaController,
-              label: "Nome da pessoa",
-            ),
+                  AppTextField(
+                    controller: pessoaController,
+                    label: "Nome da pessoa",
+                  ),
 
-            const SizedBox(height: 8),
+                  const SizedBox(height: 8),
 
-            AppButton(
-              text: "Adicionar Pessoa",
-              onPressed: _adicionarPessoa,
-            ),
+                  AppButton(
+                    text: "Adicionar Pessoa",
+                    onPressed: _adicionarPessoa,
+                    backgroundColor: const Color.fromARGB(127, 140, 135, 135),
+                  ),
 
-            const SizedBox(height: 12),
+                  const SizedBox(height: 12),
 
-            ...pessoas.map(
-              (p) => SimpleListTile(
-                title: p.nome,
+                  ...pessoas.map(
+                    (p) => SimpleListTile(
+                      title: p.nome,
+                    ),
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  /// 🛒 PRODUTOS
+                  const Text(
+                    "Produtos",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  AppTextField(
+                    controller: produtoNomeController,
+                    label: "Nome do produto",
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  AppTextField(
+                    controller: produtoPrecoController,
+                    label: "Preço",
+                    keyboardType: TextInputType.number,
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  AppButton(
+                    text: "Adicionar Produto",
+                    onPressed: _adicionarProduto,
+                     backgroundColor: const Color.fromARGB(127, 140, 135, 135),
+                  ),
+
+                  const SizedBox(height: 12),
+
+                  ...produtos.map(
+                    (p) => SimpleListTile(
+                      title: p.nome,
+                      subtitle: "${p.preco.toStringAsFixed(2)} €",
+                    ),
+                  ),
+                ],
               ),
             ),
+          ),
 
-            const SizedBox(height: 24),
-
-            /// 🛒 PRODUTOS
-            const Text(
-              "Produtos",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-
-            const SizedBox(height: 8),
-
-            AppTextField(
-              controller: produtoNomeController,
-              label: "Nome do produto",
-            ),
-
-            const SizedBox(height: 8),
-
-            AppTextField(
-              controller: produtoPrecoController,
-              label: "Preço",
-              keyboardType: TextInputType.number,
-            ),
-
-            const SizedBox(height: 8),
-
-            AppButton(
-              text: "Adicionar Produto",
-              onPressed: _adicionarProduto,
-            ),
-
-            const SizedBox(height: 12),
-
-            ...produtos.map(
-              (p) => SimpleListTile(
-                title: p.nome,
-                subtitle: "${p.preco.toStringAsFixed(2)} €",
-              ),
-            ),
-          ],
-        ),
+          AppButton(
+            text: "Navegar",
+            onPressed: () {},
+             backgroundColor: const Color.fromARGB(127, 140, 135, 135),
+          ),
+        ],
       ),
     );
   }
