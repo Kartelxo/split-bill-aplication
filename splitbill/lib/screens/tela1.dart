@@ -75,10 +75,7 @@ class _DivisaoScreenState extends ConsumerState<DivisaoScreen> {
         title: const Text("Divisão de Contas"),
       ),
 
-      floatingActionButton: ExtendedFAB(
-        label: "Adicionar Produto",
-        onPressed: _adicionarProduto,
-      ),
+     //adicionar botao para pagina seguinte 
 
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
